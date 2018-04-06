@@ -6,14 +6,29 @@ import { ProjectlistService } from './projectlist.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'Angular Route Gaurds';
+  title = 'Angular WordPress RestApi';
 
   constructor(private user:ProjectlistService) {
 
   }
 
+  createPost(){
+    console.log('coming here fun');
+    this.user.getSisenceData().then(postCreatedData => {
+      console.log('postCreatedData',postCreatedData);
+    });
+  }
+
+  deletePost(){
+    console.log('coming here fun');
+    this.user.deletePosts()
+    .subscribe((postCreatedData => {
+      console.log('successfully post created',postCreatedData)
+    }));
+  }
+
   ngOnInit(){
-    this.user.getWordPressData();
-    this.user.createPosts();
+    //this.user.getWordPressData();
+   //this.user.getSisenceData();
  }
 }
