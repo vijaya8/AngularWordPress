@@ -6,11 +6,13 @@ import {FormsModule} from '@angular/forms';
 
 
 import { AppComponent } from './app.component';
+import { CreatePostComponent } from './create-post/create-post.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CreatePostComponent
   ],
   imports: [
     BrowserModule,
