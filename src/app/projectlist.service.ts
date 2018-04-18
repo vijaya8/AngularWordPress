@@ -12,7 +12,10 @@ export class ProjectlistService {
   }
 
   getPostsData() {
-    return this.http.get('http://localhost/myfirstwordpressApp/wp-json/wp/v2/posts/');
+    const _headers = new HttpHeaders();
+    const headers = _headers.set('Content-Type', 'application/json')
+      .set('authorization', 'Basic ' + btoa('olivewpr:v3Jo140tsU'));
+    return this.http.get('http://olivewprest.tryfcomet.com/wp-json/wp/v2/posts/', {headers: headers});
   }
 
   async getSisenceData() {
@@ -43,8 +46,8 @@ export class ProjectlistService {
       content: postData.content,
       author: 1,
       excerpt: postData.content,
-      featured_media: 12696,
-      categories: 5,
+      featured_media: 10,
+      categories: 3,
       tags: 9,
       format: 'quote',
       comment_status: 'open',
@@ -52,36 +55,35 @@ export class ProjectlistService {
     };
     const _headers = new HttpHeaders();
     const headers = _headers.set('Content-Type', 'application/json')
-      .set('authorization', 'Basic ' + btoa('vijaya:vijaya@olive@868'));
+      .set('authorization', 'Basic ' + btoa('olivewpr:v3Jo140tsU'));
 
-    return this.http.post('http://localhost/myfirstwordpressApp/wp-json/wp/v2/posts/', data,
+    return this.http.post('http://olivewprest.tryfcomet.com/wp-json/wp/v2/posts/', data,
       {headers: headers});
 
   }
 
   updatePosts(postData: any) {
     const data = {
-      date: '2018-04-08T19:46:56',
       title: postData.title.rendered,
       status: postData.status,
       content: postData.content.rendered,
       protected: false,
-      password: 'password@123'
+      categories: 4,
     };
     const _headers = new HttpHeaders();
     const headers = _headers.set('Content-Type', 'application/json')
-      .set('authorization', 'Basic ' + btoa('vijaya:vijaya@olive@868'));
+      .set('authorization', 'Basic ' + btoa('olivewpr:v3Jo140tsU'));
 
-    return this.http.post('http://localhost/myfirstwordpressApp/wp-json/wp/v2/posts/' + postData.id,
+    return this.http.post('http://olivewprest.tryfcomet.com/wp-json/wp/v2/posts/' + postData.id,
       data, {headers: headers});
   }
 
   deletePosts(postId: string) {
     const _headers = new HttpHeaders();
     const headers = _headers.set('Content-Type', 'application/json')
-      .set('authorization', 'Basic ' + btoa('vijaya:vijaya@olive@868'));
+      .set('authorization', 'Basic ' + btoa('olivewpr:v3Jo140tsU'));
 
-    return this.http.delete('http://localhost/myfirstwordpressApp/wp-json/wp/v2/posts/' + postId,
+    return this.http.delete('http://olivewprest.tryfcomet.com/wp-json/wp/v2/posts/' + postId,
       {headers: headers});
   }
 
