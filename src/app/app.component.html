@@ -12,7 +12,7 @@
 </div>
 
 <div *ngIf="enableCreate">
-  <app-create-post></app-create-post>
+  <app-create-post (messageEvent)="receiveMessage($event)"></app-create-post>
 </div>
 
 

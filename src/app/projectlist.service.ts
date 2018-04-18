@@ -36,7 +36,6 @@ export class ProjectlistService {
 
 
   createPosts(postData: any) {
-    console.log(postData);
     const data = {
       title: postData.title,
       status: 'publish',
@@ -54,8 +53,6 @@ export class ProjectlistService {
     const _headers = new HttpHeaders();
     const headers = _headers.set('Content-Type', 'application/json')
       .set('authorization', 'Basic ' + btoa('vijaya:vijaya@olive@868'));
-
-    console.log('headers', headers);
 
     return this.http.post('http://localhost/myfirstwordpressApp/wp-json/wp/v2/posts/', data,
       {headers: headers});

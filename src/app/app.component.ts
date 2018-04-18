@@ -33,17 +33,23 @@ export class AppComponent implements OnInit {
         this.user.getPostsData()
           .subscribe((result => {
             this.postData = result;
-            console.log('this.postData', this.postData);
           }));
       }));
   }
 
+  receiveMessage($event) {
+    this.enableCreate = $event;
+    this.getPostData();
+  }
 
-  ngOnInit() {
+  getPostData() {
     this.user.getPostsData()
       .subscribe((result => {
         this.postData = result;
-        console.log('this.postData', this.postData);
       }));
+  }
+
+  ngOnInit() {
+    this.getPostData();
   }
 }
