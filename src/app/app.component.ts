@@ -1,6 +1,6 @@
-import { Component, OnInit} from '@angular/core';
-import { ProjectlistService } from './projectlist.service';
-import { window } from 'rxjs/operator/window';
+import {Component, OnInit} from '@angular/core';
+import {ProjectlistService} from './projectlist.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,41 +11,39 @@ export class AppComponent implements OnInit {
   postData: any;
   enableCreate: boolean;
 
-  constructor(private user:ProjectlistService) {
+  constructor(private user: ProjectlistService) {
     this.enableCreate = false;
   }
 
-  createPost(postData: any){
-    console.log('coming here fun');
+  createPost(postData: any) {
     this.enableCreate = true;
   }
 
-  deletePost(postData: any){
-    console.log('coming here fun');
+  updatePost(postData: any) {
+    this.user.updatePosts(postData)
+      .subscribe(updatedData => {
+        alert('Post is Updated successfully!');
+      });
+  }
+
+  deletePost(postData: any) {
     this.user.deletePosts(postData.id)
-    .subscribe((postCreatedData => {
-      alert('Post is deleted successfuly!');
-      this.user.getPostsData()
+      .subscribe((postCreatedData => {
+        alert('Post is deleted successfully!');
+        this.user.getPostsData()
+          .subscribe((result => {
+            this.postData = result;
+            console.log('this.postData', this.postData);
+          }));
+      }));
+  }
+
+
+  ngOnInit() {
+    this.user.getPostsData()
       .subscribe((result => {
         this.postData = result;
-        console.log('this.postData',this.postData);
+        console.log('this.postData', this.postData);
       }));
-    }));
   }
-
-  updatePost(postData: any){
-    console.log('postData',postData);
-    this.user.updatePosts(postData)
-    .subscribe(updatedData => {
-        alert('Post is Updated successfuly!');
-    })
-  }
-
-  ngOnInit(){
-    this.user.getPostsData()
-    .subscribe((result => {
-      this.postData = result;
-      console.log('this.postData',this.postData);
-    }));
- }
 }

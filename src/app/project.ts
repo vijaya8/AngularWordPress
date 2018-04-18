@@ -1,8 +1,65 @@
 interface ICartId {
-    cartId: string;
+  cartId: string;
 }
 
 export class Project implements ICartId {
+
+  projectId: string;
+  clusterId: string;
+  campaignId: string;
+  projectName: string;
+  languageId: string;
+  stgStatusName: string;
+  pipelineFlag: boolean;
+  organizationId: string;
+  projectLifetimeFundingGoal: number;
+  projectLifetimeRemainNeed: number;
+  beforeIBibleDonationsRemainingNeed: number;
+  totalPledges: number;
+  totalGiven: number;
+  beforeIBibleTotalGiven: number;
+  iBibleOnlyTotalGiven: number;
+  languageCount: number;
+  isClusterFlag: boolean;
+  commonFrameworkFlag: boolean;
+  featuredProjectFlag: boolean;
+  prayerCommitCnt: number;
+  beginYr: number;
+  sensitivityLevel: number;
+  firstScriptureFlag: boolean;
+  translationTypeWrittenTranslationFlag: boolean;
+  translationTypeWrittenStoriesFlag: boolean;
+  translationTypeOralTranslationFlag: boolean;
+  translationTypeOralStoryingFlag: boolean;
+  translationTypeSignLanguageFlag: boolean;
+  translationTypeFilmFlag: boolean;
+  translationTypeOtherGoalsFlag: boolean;
+  goalsFullBibleFlag: boolean;
+  goalsFullNTFlag: boolean;
+  goalsFullOTFlag: boolean;
+  goalsAGospelFlag: boolean;
+  goalsGenesisFlag: boolean;
+  goalsNtPortionsFlag: boolean;
+  goalsOtPortionsFlag: boolean;
+  goalsJesusFilmFlag: boolean;
+  goalsBibleStoriesFlag: boolean;
+  gathering2017Flag: boolean;
+  bannerImage?: string;
+  cardImage?: string;
+  continent?: string;
+  country?: string;
+  description?: string;
+  language?: string;
+  meta?: any;
+  population?: number;
+  populationRange?: string;
+  projectDialectFlag?: boolean;
+  visibleFlag?: boolean;
+  totalDonors?: number;
+
+  get cartId(): string {
+    return `p${this.campaignId}`;
+  }
 
   static fromJson(json: any): Project {
     const project = new Project();
@@ -82,63 +139,6 @@ export class Project implements ICartId {
 
     return projects;
   }
-
-  get cartId(): string {
-    return `p${this.campaignId}`;
-  }
-
-  projectId: string;
-  clusterId: string;
-  campaignId: string;
-  projectName: string;
-  languageId: string;
-  stgStatusName: string;
-  pipelineFlag: boolean;
-  organizationId: string;
-  projectLifetimeFundingGoal: number;
-  projectLifetimeRemainNeed: number;
-  beforeIBibleDonationsRemainingNeed: number;
-  totalPledges: number;
-  totalGiven: number;
-  beforeIBibleTotalGiven: number;
-  iBibleOnlyTotalGiven: number;
-  languageCount: number;
-  isClusterFlag: boolean;
-  commonFrameworkFlag: boolean;
-  featuredProjectFlag: boolean;
-  prayerCommitCnt: number;
-  beginYr: number;
-  sensitivityLevel: number;
-  firstScriptureFlag: boolean;
-  translationTypeWrittenTranslationFlag: boolean;
-  translationTypeWrittenStoriesFlag: boolean;
-  translationTypeOralTranslationFlag: boolean;
-  translationTypeOralStoryingFlag: boolean;
-  translationTypeSignLanguageFlag: boolean;
-  translationTypeFilmFlag: boolean;
-  translationTypeOtherGoalsFlag: boolean;
-  goalsFullBibleFlag: boolean;
-  goalsFullNTFlag: boolean;
-  goalsFullOTFlag: boolean;
-  goalsAGospelFlag: boolean;
-  goalsGenesisFlag: boolean;
-  goalsNtPortionsFlag: boolean;
-  goalsOtPortionsFlag: boolean;
-  goalsJesusFilmFlag: boolean;
-  goalsBibleStoriesFlag: boolean;
-  gathering2017Flag: boolean;
-  bannerImage?: string;
-  cardImage?: string;
-  continent?: string;
-  country?: string;
-  description?: string;
-  language?: string;
-  meta?: any;
-  population?: number;
-  populationRange?: string;
-  projectDialectFlag?: boolean;
-  visibleFlag?: boolean;
-  totalDonors?: number;
 
   copy(): Project {
     const newProj = new Project();

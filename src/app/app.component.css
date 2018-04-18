@@ -1,3 +1,37 @@
-.container{
-    text-align: center
+.container {
+  text-align: center;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 30px;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2
+}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+h1 {
+  font-family: 'Open Sans';
+  font-weight: bold;
+  font-size: 34px;
+  letter-spacing: 0.3px;
+  line-height: 34px;
+}
+
+.result {
+  width: 800px;
+  margin: auto;
+  margin-top: 80px;
 }

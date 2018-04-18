@@ -12,28 +12,29 @@
 </div>
 
 <div *ngIf="enableCreate">
-    <app-create-post></app-create-post>
+  <app-create-post></app-create-post>
 </div>
 
 
-<div>
-  <h1 style="color:rgb(10, 206, 206); margin: 35px;">WordPress Posts Results</h1>
-  
-  <table style="width:100%">
-      <tr>
-        <th>Title</th>
-        <th>Content</th>
-      </tr>
-      <tr *ngFor="let p of postData">
-        <td><input type="text" [(ngModel)]="p.title.rendered"></td>
-        <td><input type="text" [(ngModel)]="p.content.rendered"></td>
-        <td> 
-          <button type="submit" class="btn btn-success" (click)="updatePost(p)" >Update</button>
-        </td>
-        <td>
+<div class="result">
+  <h1>WordPress Created Posts Results</h1>
+  <table>
+    <tr>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Update</th>
+      <th>Delete</th>
+    </tr>
+    <tr *ngFor="let p of postData">
+      <td>{{p.title.rendered}}</td>
+      <td>{{p.content.rendered}}</td>
+      <td>
+        <button type="submit" class="btn btn-success" (click)="updatePost(p)">Update</button>
+      </td>
+      <td>
         <button type="submit" class="btn btn-success" (click)="deletePost(p)">Delete Post</button>
       </td>
-      </tr>
-    </table>
+    </tr>
+  </table>
 </div>
 
